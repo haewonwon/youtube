@@ -65,6 +65,27 @@ section {
 .leaveVideo {
     border-radius: 20px;
 }
+/* Shorts */
+#shortsBox {
+    width: 410px;
+    height: 700px;
+    border: solid black 3px;
+    border-radius: 30px;
+    margin-left: 450px;
+    /* margin-right: auto; */
+
+}
+#settings {
+    display: flex;
+    flex-direction: column;
+    padding-top: 240px;
+}
+.settingsItem {
+    border: solid black 1px;
+    border-radius: 50px;
+    padding: 20px;
+    margin: 10px;
+}
 /* 미디어 쿼리 */
 @media screen and (max-width: 500px) {
     #search {display: none;}
