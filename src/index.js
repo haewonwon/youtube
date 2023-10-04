@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// 기존 바닐라웹은 HTML이 중심이어서 HTML에서 IMPORT 작업을 했음
+// JS가 중심이기에 모든 IMPORT 또한 JS에서 해주어야 함
+import React from "react"
+import ReactDOM from "react-dom/client"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import { Provider } from "react-redux"
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import App from "./App"
+import store from "./Redux/Reducer"
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <Provider store={store} >
+        <App />
+    </Provider>
+)

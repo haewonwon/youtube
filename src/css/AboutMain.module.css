@@ -1,0 +1,74 @@
+button {
+    background-color: transparent;
+    border: none;
+}
+
+p {
+    margin: 0;
+}
+main {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 90px;
+    padding-left: 75px;
+}
+/* background image 를 사용할 때 div 고정 크기일 때 비율 맞추면서 이미지를 깨지지 않게 하기 위해서 다만 좀 잘리긴 함 */
+/* <section> */
+section {
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    /* max-width를 설정하면 더 좋을 것임 */
+
+    /* 부모한테 fLEX가 있을 때 쓸 수 있음 */
+    flex-grow: 1;
+    flex-basis: 330px;
+    padding: 7px;
+}
+.pics {
+    border-radius: 20px;
+    width: 100%;
+}
+.data {
+    display: flex;
+    /* flex를 주지 않으면 프로필 아이콘이나 데이터 부분에 길이를 직접 설정해줘야 하는데 그게 어려움 그것보다는 flex가 나음*/
+    width: 100%;
+}
+.ppic {
+    margin-top: 7px;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+}
+.info {
+    margin-top: 5px;
+    /* width: fit-content; */
+    /* 프로필 사진에 고정 사이즈가 들어가서 인포에는 사이즈를 주지 않아도 됨 왜냐? flex를 주었기 때문에 */
+}
+.youtubers {
+    font-size: 14px;
+    color: grey;
+}
+.views {
+    font-size: 13px;
+    color: grey;
+    margin-right: 3px;
+}
+.dates {
+    font-size: 13px;
+    color: grey;
+}
+.enterVideo {
+    border-radius: 0px;
+}
+
+.leaveVideo {
+    border-radius: 20px;
+}
+/* 미디어 쿼리 */
+@media screen and (max-width: 500px) {
+    #search {display: none;}
+}
+@media screen and (max-width: 800px) {
+    nav {display: none;}
+}

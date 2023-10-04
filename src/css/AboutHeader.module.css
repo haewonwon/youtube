@@ -1,0 +1,73 @@
+button {
+    background-color: transparent;
+    border: none;
+}
+
+p {
+    margin: 0;
+}
+header {
+    display: flex;
+    position: fixed;
+    width: 96%;
+    height: 56px;
+    top: 0px;
+    background-color: #FFFFFF;
+    padding-left: 16px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+/* start */
+#start {
+    display: flex;
+    align-items: center;
+}
+.hicon {
+    width: 30px;
+    margin-right: 10px;
+}
+#ytbicon {
+    width: 140px;
+    height: 27px;
+}
+/* center */
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 800px;
+}
+#search {
+    /* display: flex; */
+    /* flex 남발 */
+    /* max-width도 적용하면 좋음 모니터 해상도 차이가 있기 때문에 */
+    height: 38px;
+    width: 50%;
+    border-radius: 40px 0 0 40px;
+}
+#searchicon {
+    background-color: #dbdcdb;
+    border-radius: 0 40px 40px 0;
+    height: 46px;
+}
+#micicon {
+    width: 45px;
+}
+/* end */
+#end {
+    display: flex;
+    align-items: center;
+    /* padding-right: 50px; */
+}
+#pficon {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+/* 미디어 쿼리 */
+@media screen and (max-width: 500px) {
+    #search {display: none;}
+}
+@media screen and (max-width: 800px) {
+    nav {display: none;}
+}

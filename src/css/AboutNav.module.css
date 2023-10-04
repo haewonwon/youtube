@@ -1,0 +1,82 @@
+button {
+    background-color: transparent;
+    border: none;
+}
+p {
+    margin: 0;
+}
+nav {
+    display: inline-flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #FFFFFF;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: 50px;
+    align-items: center;
+}
+#newnavcomponent {
+    padding-top: 16px;
+    z-index: 1;
+}
+.nicon {
+    width: 25px;
+}
+.originBtnStyle {
+    border-radius: 0px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 68px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+    font-size: 13px;
+}
+.enterOriginBtnStyle {
+    border-radius: 10px;
+    background-color: #dbdcdb;
+    display: flex;
+    flex-direction: column;
+    width: 68px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+    font-size: 13px;
+}
+.newBtnStyle {
+    border-radius: 0px;
+    background-color: #ffffff;
+    display: flex;
+    width: 160px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    align-items: center;
+    font-size: 13px;
+}
+.enterNewBtnStyle {
+    border-radius: 10px;
+    background-color: #dbdcdb;
+    display: flex;
+    width: 160px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    align-items: center;
+    font-size: 13px;
+}
+/* 미디어 쿼리 */
+@media screen and (max-width: 500px) {
+    #search {display: none;}
+}
+@media screen and (max-width: 800px) {
+    nav {display: none;}
+}
