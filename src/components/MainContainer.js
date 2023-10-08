@@ -11,17 +11,21 @@ import { videoMouseEnter, videoMouseLeave } from "../Redux/Action.js"
 
 const MainContainer = () => {
 
+    // 백엔드 state 는 redux 로
     const [data, setData] = React.useState([])
     const dispatch = useDispatch()
+
     const navIconIndex = useSelector(state => state.navIconIndex)
 
     const videoMouseEnterEvent = (e) => {
 
+        const type = e.target.id.split('_')[0]
         const videoIndex = parseInt(e.target.id.split('_')[1])
+        console.log("메롱")
 
-        switch(e.target.id) {
-            case `thumbnail_${videoIndex}`:
-                dispatch(videoMouseEnter())
+        switch(type) {
+            case "thumbnail" :
+                dispatch(videoMouseEnter(videoIndex))
                 break
         }
 
@@ -29,11 +33,12 @@ const MainContainer = () => {
 
     const videoMouseLeaveEvent = (e) => {
 
+        const type = e.target.id.split('_')[0]
         const videoIndex = parseInt(e.target.id.split('_')[1])
 
-        switch(e.target.id) {
-            case `thumbnail${videoIndex}`:
-                dispatch(videoMouseLeave())
+        switch(type) {
+            case "thumbnail" :
+                dispatch(videoMouseLeave(videoIndex))
                 break
         }
 

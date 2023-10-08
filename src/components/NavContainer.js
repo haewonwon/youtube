@@ -1,5 +1,6 @@
 import React from "react"
 import NavButtonComponent from "./NavButtonComponent.js"
+import WideNavContainer from "./WideNavContainer"
 import styles from "../css/AboutNav.module.css"
 
 import { useDispatch } from "react-redux"
@@ -11,7 +12,9 @@ const NavContainer = () => {
     const [data, setData] = React.useState([])
 
     const dispatch = useDispatch()
+    // true, false 로 나온다면 isNavSelected 등
     const navIconStyle = useSelector(state => state.navIconStyle)
+    const wideNavOpened = useSelector((state) => state.wideNavOpened)
 
     const navMouseEnterEvent = (e) => {
 
@@ -19,7 +22,7 @@ const NavContainer = () => {
 
         switch(e.target.id) {
             case `nav_icon_${iconIndex}` :
-                dispatch(navMouseEnter())
+                dispatch(navMouseEnter(iconIndex))
                 break
         }
 
@@ -31,23 +34,11 @@ const NavContainer = () => {
 
         switch(e.target.id) {
             case `nav_icon_${iconIndex}` :
-                dispatch(navMouseLeave())
+                dispatch(navMouseLeave(iconIndex))
                 break
         }
 
     }
-
-    // const iconClickEvent = (e) => {
-
-    //     const splitTargetId = e.target.id.split('_')
-
-    //     switch (e.target.id) {
-    //         case `nav_icon_${splitTargetId[2]}`:
-    //             dispatch(navIconUpdate(splitTargetId[2]))
-    //             break
-    //     }
-
-    // }
 
     const iconClickEvent = (e) => {
 
@@ -60,6 +51,7 @@ const NavContainer = () => {
         }
 
     }
+
 
     React.useEffect(() => {
 
@@ -89,12 +81,19 @@ const NavContainer = () => {
         setData(navDataSet)
     }, [])
 
+    // key랑 id 랑 같은 값이기에 id는 지워도 됨
+    // 속성 너무 많으니 줄이기
     return (
-        <nav id="nav_component" onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent} onClick={iconClickEvent}>
+        <>
+            <nav id="nav_component" onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent} onClick={iconClickEvent}>
             {
-                data.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} src={element.src} title={element.title} className={navIconStyle ? styles.enterOriginBtnStyle : styles.originBtnStyle} />)
+                data.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} src={element.src} title={element.title} className={navIconStyle === navIndex ? styles.enterOriginBtnStyle : styles.originBtnStyle} />)
             }
-        </nav>
+            </nav>
+            <>
+                {wideNavOpened && <WideNavContainer />}
+            </>
+        </>
     )
 }
 

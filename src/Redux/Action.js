@@ -1,23 +1,25 @@
 // 1
-const menuBtnClick = () => {
+export const menuBtnClick = () => {
     return {
         "type" : "MENU_BTN_CLICK"
     }
 }
 // 2
-const navMouseEnter = () => {
+export const navMouseEnter = (iconIndex) => {
     return {
-        "type" : "NAV_MOUSE_ENTER"
+        "type" : "NAV_MOUSE_ENTER",
+        "payload" : iconIndex
     }
 }
 
-const navMouseLeave = () => {
+export const navMouseLeave = (iconIndex) => {
     return {
-        "type" : "NAV_MOUSE_LEAVE"
+        "type" : "NAV_MOUSE_LEAVE",
+        "payload" : iconIndex
     }
 }
 // 3
-const navIconUpdate = (iconIndex) => {
+export const navIconUpdate = (iconIndex) => {
     return {
         "type" : "NAV_ICON_UPDATE",
         "payload" : iconIndex
@@ -30,16 +32,16 @@ const navIconUpdate = (iconIndex) => {
 //     }
 // }
 // 5
-const videoMouseEnter = () => {
+export const videoMouseEnter = (iconIndex) => {
     return {
-        "type" : "VIDEO_MOUSE_ENTER"
+        "type" : "VIDEO_MOUSE_ENTER",
+        "payload" : iconIndex
     }
 }
 
-const videoMouseLeave = () => {
+export const videoMouseLeave = (iconIndex) => {
     return {
-        "type" : "VIDEO_MOUSE_LEAVE"
+        "type" : "VIDEO_MOUSE_LEAVE",
+        "payload" : iconIndex
     }
 }
-
-export { menuBtnClick, navMouseEnter, navMouseLeave, navIconUpdate, videoMouseEnter, videoMouseLeave }

@@ -2,9 +2,9 @@ import { createStore } from "redux"
 
 const initState = {
     "wideNavOpened": false,
-    "navIconStyle": false,
+    "navIconStyle": 0,
     "navIconIndex": 0,
-    "videoBorderStyle": false
+    "videoBorderStyle": -1
 }
 
 const reducer = (state = initState, action) => {
@@ -23,7 +23,8 @@ const reducer = (state = initState, action) => {
         case "NAV_MOUSE_LEAVE":
             return {
                 ...state,
-                "navIconStyle": !state.navIconStyle
+                // "navIconStyle": !state.navIconStyle
+                "navIconStyle": action.payload
             }
         // <nav> 의 4개 icon 중 어떤 것을 선택하냐에 따라 그 아이콘의 index 전달
         // 3
@@ -32,16 +33,24 @@ const reducer = (state = initState, action) => {
                 ...state,
                 "navIconIndex": action.payload
             }
-        default:
-            return state
-        // <section> 에 mouse enter, leave 에 따라 treu, false
+        // <section> 에 mouse enter, leave 에 따라 true, false
+        // 몇 번째 index 가 체크되어있는지 봐야 하기 때문에 true, false 로 처리할 수 없음
+        // 영상 개수가 많기 때문에 redux 로 처리하면 안 됨 대표적으로 useState를 사용하는 부분
+        // 이벤트를 시작하고, 도착하는 지점이 같을 때는 useState를 사용하는 게 효율적임 (예를 들어 mouseenter)
+        // redux를 사용하지 않으면 이벤트 델리게이션을 줄 수 없음 리렌더링이 매우 비효율적임
         // 5
         case "VIDEO_MOUSE_ENTER":
+            return {
+                ...state,
+                "videoBorderStyle": action.payload
+            }
         case "VIDEO_MOUSE_LEAVE":
             return {
                 ...state,
-                "videoBorderStyle": !state.videoBorderStyle
+                "videoBorderStyle": -1
             }
+        default:
+            return state
     }
 
 }

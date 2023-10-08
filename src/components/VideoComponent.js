@@ -8,9 +8,12 @@ const SectionComponent = (props) => {
 
     const videoBorderStyle = useSelector(state => state.videoBorderStyle)
 
+    console.log(id)
+    console.log(videoBorderStyle)
+    
     return (
         <section className={styles.video}>
-            <img id={`thumbnail_${id}`} className={videoBorderStyle ? styles.enterVideo : styles.leaveVideo} src={thumbnailSrc}/>
+            <img id={`thumbnail_${id}`} src={thumbnailSrc} className={videoBorderStyle === id ? styles.enterVideo : styles.leaveVideo}/>
             <div id={styles.data} className={styles.data}>
                 <img id={styles.profile_img} src={profileSrc} className={styles.ppic} />
                 <div id={styles.info} className={styles.info}>
