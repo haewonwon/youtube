@@ -1,19 +1,22 @@
 import React from "react"
 import styles from "../css/AboutMain.module.css"
-
-import { useSelector } from "react-redux"
  
 const SectionComponent = (props) => {
     const { id, data: {thumbnailSrc, profileSrc, titles, youtubers, views, dates} } = props
 
-    const videoBorderStyle = useSelector(state => state.videoBorderStyle)
+    const [videoBorderStyle, setVideoBorderStyle] = React.useState(false)
 
-    console.log(id)
-    console.log(videoBorderStyle)
+    const videoMouseEnterEvent = () => {
+        setVideoBorderStyle(true)
+    }
+
+    const videoMouseLeaveEvent = () => {
+        setVideoBorderStyle(false)
+    }
     
     return (
-        <section className={styles.video}>
-            <img id={`thumbnail_${id}`} src={thumbnailSrc} className={videoBorderStyle === id ? styles.enterVideo : styles.leaveVideo}/>
+        <section className={styles.video} onMouseEnter={videoMouseEnterEvent} onMouseLeave={videoMouseLeaveEvent}>
+            <img id={`thumbnail_${id}`} src={thumbnailSrc} className={videoBorderStyle ? styles.enterVideo : styles.leaveVideo}/>
             <div id={styles.data} className={styles.data}>
                 <img id={styles.profile_img} src={profileSrc} className={styles.ppic} />
                 <div id={styles.info} className={styles.info}>
