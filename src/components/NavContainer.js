@@ -2,16 +2,15 @@ import React from "react"
 import NavButtonComponent from "./NavButtonComponent.js"
 import styles from "../css/AboutNav.module.css"
 
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { navIconUpdate } from "../Redux/Action.js"
-import { navDateImport } from "../Redux/Action.js"
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+
+import { navDataState, wideNavOpendState, iconIndexState } from "../Recoil/mainAtom.js"
 
 const NavContainer = () => {
 
-    const dispatch = useDispatch()
-    const wideNavOpened = useSelector(state => state.wideNavOpened)
-    const navData = useSelector(state => state.navData)
+    const [navData, setNavData] = useRecoilState(navDataState)
+    const wideNavOpened = useRecoilValue(wideNavOpendState)
+    const navIconUpdate = useSetRecoilState(iconIndexState)
 
     const iconClickEvent = (e) => {
 
@@ -19,7 +18,7 @@ const NavContainer = () => {
 
         switch (e.target.id) {
             case `nav_icon_${iconIndex}`:
-                dispatch(navIconUpdate(iconIndex))
+                navIconUpdate(iconIndex)
                 break
         }
 
@@ -50,7 +49,7 @@ const NavContainer = () => {
             }
         ]
 
-        dispatch(navDateImport(navDataSet))
+        setNavData(navDataSet)
     }, [])
 
     return (

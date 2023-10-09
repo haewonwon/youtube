@@ -5,19 +5,18 @@ import ShortsComponent from "./ShortsComponent.js"
 import SubsComponent from "./SubComponent.js"
 import StorageComponent from "./StorageComponent.js"
 
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import { videoDataImport } from "../Redux/Action.js"
+import { useRecoilState, useRecoilValue } from "recoil"
+
+import { videoDataState, iconIndexState } from "../Recoil/mainAtom.js"
 
 const MainContainer = () => {
 
-    const dispatch = useDispatch()
-    const navIconIndex = useSelector(state => state.navIconIndex)
-    const videoData = useSelector(state => state.videoData)
+    const [videoData, setVideoData] = useRecoilState(videoDataState)
+    const navIconIndex = useRecoilValue(iconIndexState)
 
 
     React.useEffect(() => {
-        dispatch(videoDataImport(sectionData))
+        setVideoData(sectionData)
     }, [])
 
     console.log(videoData)

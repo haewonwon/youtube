@@ -1,20 +1,24 @@
 import React from "react"
 import styles from "../css/AboutNav.module.css"
 
-import { useSelector } from "react-redux"
+import { useRecoilState, useResetRecoilState, useRecoilValue } from "recoil"
+
+import { navIconStyleState, wideNavOpendState } from "../Recoil/mainAtom.js"
 
 const NavButtonComponent = (props) => {
     const { id, data: {navSrc, navTitle} } = props
 
-    const [navIconStyle, setNavIconStyle] = React.useState(false)
-    const wideNavOpened = useSelector((state) => state.wideNavOpened)
+    const [navIconStyle, setNavIconStyle] = useRecoilState(navIconStyleState)
+    const resetNavIconStyle = useResetRecoilState(navIconStyleState)
+
+    const wideNavOpened = useRecoilValue(wideNavOpendState)
 
     const navMouseEnterEvent = () => {
-        setNavIconStyle(true)
+        setNavIconStyle(!navIconStyle)
     }
 
     const navMouseLeaveEvent = () => {
-        setNavIconStyle(false)
+        resetNavIconStyle()
     }
 
     return (

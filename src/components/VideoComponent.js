@@ -1,17 +1,22 @@
 import React from "react"
 import styles from "../css/AboutMain.module.css"
- 
+
+import { useRecoilState, useResetRecoilState } from "recoil"
+
+import { videoBorderStyleState } from "../Recoil/mainAtom.js"
+
 const SectionComponent = (props) => {
     const { id, data: {thumbnailSrc, profileSrc, titles, youtubers, views, dates} } = props
 
-    const [videoBorderStyle, setVideoBorderStyle] = React.useState(false)
+    const [videoBorderStyle, setVideoBorderStyle] = useRecoilState(videoBorderStyleState)
+    const resetVideoBorderStyle = useResetRecoilState(videoBorderStyleState)
 
     const videoMouseEnterEvent = () => {
-        setVideoBorderStyle(true)
+        setVideoBorderStyle(!videoBorderStyle)
     }
 
     const videoMouseLeaveEvent = () => {
-        setVideoBorderStyle(false)
+        resetVideoBorderStyle()
     }
     
     return (
