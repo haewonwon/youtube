@@ -1,10 +1,11 @@
 import React from "react"
 import NavButtonComponent from "./NavButtonComponent.js"
-import styles from "../css/AboutNav.module.css"
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
 
 import { navDataState, wideNavOpendState, iconIndexState } from "../Recoil/mainAtom.js"
+
+import { Nav } from "./navStyle.js"
 
 const NavContainer = () => {
 
@@ -28,22 +29,18 @@ const NavContainer = () => {
 
         const navDataSet = [
             {
-                "className" : "navBtn",
                 "navSrc" : "/img/www.youtube.com_.png",
                 "navTitle" : "홈"
             },
             {
-                "className" : "navBtn",
                 "navSrc" : "/img/www.youtube.com_ (1).png",
                 "navTitle" : "Shorts"
             },
             {
-                "className" : "navBtn",
                 "navSrc" : "/img/www.youtube.com_ (4).png",
                 "navTitle" : "구독"
             },
             {
-                "className" : "navBtn",
                 "navSrc" : "/img/www.youtube.com_(8).png",
                 "navTitle" : "보관함"
             }
@@ -54,18 +51,18 @@ const NavContainer = () => {
 
     return (
         <>
-            <nav id="nav_component" onClick={iconClickEvent}>
+            <Nav onClick={iconClickEvent}>
             {
                 navData.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} data={element} />)
             }
-            </nav>
+            </Nav>
             {
                 wideNavOpened &&
-                <nav id={styles.newnavcomponent} onClick={iconClickEvent}>
+                <Nav paddingTop="16px" zIndex="1" onClick={iconClickEvent}>
                     {
                         navData.map ((element, navIndex) => <NavButtonComponent key={navIndex + 4} id={navIndex + 4} data={element}/>)
                     }
-                </nav>
+                </Nav>
             }
         </>
     )

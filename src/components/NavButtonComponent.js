@@ -1,15 +1,22 @@
 import React from "react"
-import styles from "../css/AboutNav.module.css"
 
 import { useRecoilState, useResetRecoilState, useRecoilValue } from "recoil"
-
 import { navIconStyleState, wideNavOpendState } from "../Recoil/mainAtom.js"
+
+import { Div } from "./navStyle.js"
+import { Button } from "./navStyle.js"
+import { Img } from "./navStyle.js"
+import { P } from "./navStyle.js"
 
 const NavButtonComponent = (props) => {
     const { id, data: {navSrc, navTitle} } = props
 
     const [navIconStyle, setNavIconStyle] = useRecoilState(navIconStyleState)
     const resetNavIconStyle = useResetRecoilState(navIconStyleState)
+
+    // const [navIconStyle, setNavIconStyle] = useRecoilState(navIconStyleState(id))
+    // const resetNavIconStyle = useResetRecoilState(navIconStyleState(id))
+
 
     const wideNavOpened = useRecoilValue(wideNavOpendState)
 
@@ -22,10 +29,10 @@ const NavButtonComponent = (props) => {
     }
 
     return (
-        <div id={`nav_icon_${id}`} className={wideNavOpened ? (navIconStyle ? styles.enterOriginBtnStyle : styles.originBtnStyle) : (navIconStyle ? styles.enterNewBtnStyle : styles.newBtnStyle)} onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent}>
-            <button id={`nav_icon_${id}`}><img id={`nav_icon_${id}`} src={navSrc} className={styles.nicon}/></button>
-            <p id={`nav_icon_${id}`}>{navTitle}</p>
-        </div>
+        <Div wideNavOpened={wideNavOpened} navIconStyle={navIconStyle} id={`nav_icon_${id}`} onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent}>
+            <Button id={`nav_icon_${id}`}><Img id={`nav_icon_${id}`} src={navSrc} /></Button>
+            <P id={`nav_icon_${id}`}>{navTitle}</P>
+        </Div>
     )
 }
 

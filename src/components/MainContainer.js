@@ -9,6 +9,8 @@ import { useRecoilState, useRecoilValue } from "recoil"
 
 import { videoDataState, iconIndexState } from "../Recoil/mainAtom.js"
 
+import { Main } from "./videoStyle.js"
+
 const MainContainer = () => {
 
     const [videoData, setVideoData] = useRecoilState(videoDataState)
@@ -22,7 +24,7 @@ const MainContainer = () => {
     console.log(videoData)
     
     return (
-        <main>
+        <Main flex="row_wrap">
             {
                 navIconIndex === 0 || navIconIndex === 4 ? (videoData.map((element, mainIndex) => (<VideoComponent key={mainIndex} id={mainIndex} data={element} />)))
                 : navIconIndex === 1 || navIconIndex === 5 ? ( <ShortsComponent /> )
@@ -30,7 +32,7 @@ const MainContainer = () => {
                 : navIconIndex === 3 || navIconIndex === 7 ? ( <StorageComponent /> )
                 : null
             }
-        </main>
+        </Main>
     )
 }
 

@@ -1,24 +1,39 @@
 import styled from "styled-components"
 
 export const Header = styled.header`
-    width: 96%;
-    height: 56px;
-    top: 0px;
     background-color: #FFFFFF;
     padding-left: 16px;
     padding-right: 20px;
+    width: 96%;
+    height: 56px;
+    top: 0px;
 
-    ${props => calFlex(props.flex)}
+    ${props => calFlex(props.flex)};
 `
 export const Div = styled.div`
-    flex-basis: ${props => props.flexBasis ||}
-    ${props => calFlex(props.flex)}
+    flex-basis: ${props => props.flexBasis || null};
+    ${props => calFlex(props.flex)};
 `
 export const Button = styled.button`
     background-color: ${props => props.backgroundColor || "transparent" };
     border: none;
     border-radius: ${props => props.borderRadius || null};
     height: ${props => props.height || null};
+`
+export const Img = styled.img`
+    width: ${props => props.width || "30px"};
+    height: ${props => props.height || null};
+    border-radius: ${props => props.borderRadius || null};
+    margin-right: ${props => props.marginRight || "10px"};
+`
+export const Input = styled.input`
+    height: 38px;
+    width: 50%;
+    border-radius: 40px 0 0 40px;
+
+    @media screen and (max-width: 500px) {
+        display: none;
+    }
 `
 const calFlex = (type) => {
 
@@ -30,9 +45,9 @@ const calFlex = (type) => {
         case "row_between":
             return`
                 display: flex;
-                justfiy-content: space-between;
+                justify-content: space-between;
             `
-        case "row_center":
+        case "row_0_center":
             return`
                 display: flex;
                 align-items: center;
@@ -45,49 +60,4 @@ const calFlex = (type) => {
             `
     }
     
-}
-// }
-/* start */
-#start {
-    display: flex;
-    align-items: center;
-}
-#center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 800px;
-}
-#end {
-    display: flex;
-    align-items: center;
-}
-.hicon {
-    width: 30px;
-    margin-right: 10px;
-}
-#ytbicon {
-    width: 140px;
-    height: 27px;
-}
-/* center */
-#search {
-    height: 38px;
-    width: 50%;
-    border-radius: 40px 0 0 40px;
-}
-@media screen and (max-width: 500px) {
-    #search {display: none;}
-}
-#micicon {
-    width: 45px;
-}
-/* end */
-#pficon {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-}
-@media screen and (max-width: 800px) {
-    nav {display: none;}
 }
