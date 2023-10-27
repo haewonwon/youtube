@@ -30,7 +30,6 @@ export const Input = styled.input`
     height: 38px;
     width: 50%;
     border-radius: 40px 0 0 40px;
-
     @media screen and (max-width: 500px) {
         display: none;
     }

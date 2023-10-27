@@ -1,11 +1,16 @@
 import React from "react"
 import NavButtonComponent from "./NavButtonComponent.js"
+import styled from "styled-components"
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
 
 import { navDataState, wideNavOpendState, iconIndexState } from "../Recoil/mainAtom.js"
 
-import { Nav } from "./navStyle.js"
+import { Nav } from "./commonStyle.js"
+
+const FixedNav = styled(Nav)`
+    position: fixed;
+`
 
 const NavContainer = () => {
 
@@ -17,6 +22,7 @@ const NavContainer = () => {
 
         const iconIndex = parseInt(e.target.id.split('_')[2])
 
+        // navIconUpdate => setIconIndex (update 보다 set 을 더 많이 사용함)
         switch (e.target.id) {
             case `nav_icon_${iconIndex}`:
                 navIconUpdate(iconIndex)
@@ -51,18 +57,18 @@ const NavContainer = () => {
 
     return (
         <>
-            <Nav onClick={iconClickEvent}>
+            <FixedNav onClick={iconClickEvent} flex="row_0_center">
             {
                 navData.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} data={element} />)
             }
-            </Nav>
+            </FixedNav>
             {
                 wideNavOpened &&
-                <Nav paddingTop="16px" zIndex="1" onClick={iconClickEvent}>
+                <FixedNav paddingTop="16px" zIndex="1" onClick={iconClickEvent} flex="inline_column_center">
                     {
-                        navData.map ((element, navIndex) => <NavButtonComponent key={navIndex + 4} id={navIndex + 4} data={element}/>)
+                        navData.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} data={element}/>)
                     }
-                </Nav>
+                </FixedNav>
             }
         </>
     )

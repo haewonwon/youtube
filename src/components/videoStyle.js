@@ -55,10 +55,3 @@ const calFlex = (type) => {
             `
     }
 }
-
-// border-radius: ${props => props.borderRadius || null};
-//     border-radius: ${props =>
-//         props.videoBorderStyle
-//             ? "0px"
-//             : "20px"
-//     };

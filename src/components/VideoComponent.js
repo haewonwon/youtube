@@ -4,11 +4,11 @@ import { useRecoilState, useResetRecoilState } from "recoil"
 
 import { videoBorderStyleState } from "../Recoil/mainAtom.js"
 
-import { Section } from "./videoStyle.js"
-import { Img } from "./videoStyle.js"
-import { Div } from "./videoStyle.js"
-import { P } from "./videoStyle.js"
-import { Span } from "./videoStyle.js"
+import { Section } from "./commonStyle.js"
+import { Img } from "./commonStyle.js"
+import { Div } from "./commonStyle.js"
+import { P } from "./commonStyle.js"
+import { Span } from "./commonStyle.js"
 
 const SectionComponent = (props) => {
     const { id, data: {thumbnailSrc, profileSrc, titles, youtubers, views, dates} } = props
@@ -16,8 +16,12 @@ const SectionComponent = (props) => {
     const [videoBorderStyle, setVideoBorderStyle] = useRecoilState(videoBorderStyleState)
     const resetVideoBorderStyle = useResetRecoilState(videoBorderStyleState)
 
-    const videoMouseEnterEvent = () => {
-        setVideoBorderStyle(!videoBorderStyle)
+
+    const videoMouseEnterEvent = (e) => {
+
+        const targetId = e.target.id
+        const index = targetId.split("_")[2]
+        setVideoBorderStyle(index)
     }
 
     const videoMouseLeaveEvent = () => {
@@ -26,12 +30,12 @@ const SectionComponent = (props) => {
     
     return (
         <Section flex="section" onMouseEnter={videoMouseEnterEvent} onMouseLeave={videoMouseLeaveEvent}>
-            <Img id={`thumbnail_${id}`} src={thumbnailSrc} Width="100%" videoBorderStyle={videoBorderStyle} />
+            <Img id={`thumbnail_${id}`} src={thumbnailSrc} width="100%" videoBorderStyle={videoBorderStyle == id ? true : false } />
             <Div flex="row" Width="100%">
-                <Img src={profileSrc} Width="37px" Height="37px" marginTop="7px" borderRadius="50%" />
+                <Img src={profileSrc} width="37px" height="37px" marginTop="7px" borderRadius="50%" />
                 <Div marginTop="5px">
                     <P>{titles}</P>
-                    <P fontSize="14px" Color="grey">{youtubers}</P>
+                    <P fontSize="14px" color="grey">{youtubers}</P>
                     <Span marginRight="3px">{views}</Span><Span>{dates}</Span>
                 </Div>
             </Div>
