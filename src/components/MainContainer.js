@@ -9,7 +9,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 
 import { videoDataState, iconIndexState } from "../Recoil/mainAtom.js"
 
-import { Main } from "./videoStyle.js"
+import { Main } from "./commonStyle.js"
 
 const MainContainer = () => {
 

@@ -57,7 +57,7 @@ const NavContainer = () => {
 
     return (
         <>
-            <FixedNav onClick={iconClickEvent} flex="row_0_center">
+            <FixedNav onClick={iconClickEvent} flex="inline_column_center">
             {
                 navData.map ((element, navIndex) => <NavButtonComponent key={navIndex} id={navIndex} data={element} />)
             }

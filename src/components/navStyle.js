@@ -34,11 +34,7 @@ export const Div = styled.div`
             ? (props.navIconStyle ? '#dbdcdb' : '#ffffff')
             : (props.navIconStyle ? '#dbdcdb' : '#ffffff')
     };
-    width: ${props =>
-        props.wideNavOpened
-            ? (props.navIconStyle ? '160px' : '160px')
-            : (props.navIconStyle ? '68px' : '68px')
-    };
+    width: ${props => props.width || null};
     
     ${props => calFlex(props.wideNavOpened)};
 `
@@ -66,6 +62,13 @@ const calFlex = (wideNavOpened) => {
         `
     }
 }
+
+// width: ${props =>
+//     props.wideNavOpened
+//         ? (props.navIconStyle ? '160px' : '160px')
+//         : (props.navIconStyle ? '68px' : '68px')
+// };
+
 // const calFlex = (type) => {
 
 //     switch (type) {

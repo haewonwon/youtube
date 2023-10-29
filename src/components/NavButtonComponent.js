@@ -27,18 +27,8 @@ const NavButtonComponent = (props) => {
         resetNavIconStyle()
     }
 
-    // const dynamicStyle = {
-    //     width: props.wideNavOpened
-    //       ? (props.navIconStyle ? '160px' : '160px')
-    //       : (props.navIconStyle ? '68px' : '68px')
-    //   } || (props.width || null)
-
-    // wideNavOpened
-    //         ? (navIconStyle ? '160px' : '160px')
-    //         : (navIconStyle ? '68px' : '68px')
-
     return (
-        <Div borderRadius={navIconStyle ? '10px' : '0px'} backgroundColor={navIconStyle == id ? true : false} id={`nav_icon_${id}`} fontSize="13px" paddingTop="15px" paddingBottom="15px"  onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent}>
+        <Div flex={wideNavOpened ? 'row_0_center' : 'row_column_center'} width={wideNavOpened ? '160px': '68px'} borderRadius={navIconStyle ? '10px' : '0px'} backgroundColor={navIconStyle == id ? true : false} id={`nav_icon_${id}`} fontSize="13px" paddingTop="15px" paddingBottom="15px"  onMouseEnter={navMouseEnterEvent} onMouseLeave={navMouseLeaveEvent}>
             <Button id={`nav_icon_${id}`}><Img id={`nav_icon_${id}`} src={navSrc} width="25px" /></Button>
             <P id={`nav_icon_${id}`}>{navTitle}</P>
         </Div>

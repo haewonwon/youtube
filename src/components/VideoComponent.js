@@ -20,7 +20,7 @@ const SectionComponent = (props) => {
     const videoMouseEnterEvent = (e) => {
 
         const targetId = e.target.id
-        const index = targetId.split("_")[2]
+        const index = targetId.split("_")[1]
         setVideoBorderStyle(index)
     }
 
@@ -30,7 +30,7 @@ const SectionComponent = (props) => {
     
     return (
         <Section flex="section" onMouseEnter={videoMouseEnterEvent} onMouseLeave={videoMouseLeaveEvent}>
-            <Img id={`thumbnail_${id}`} src={thumbnailSrc} width="100%" videoBorderStyle={videoBorderStyle == id ? true : false } />
+            <Img id={`thumbnail_${id}`} src={thumbnailSrc} width="100%" borderRadius={videoBorderStyle == id ? "0px" : "20px"} />
             <Div flex="row" Width="100%">
                 <Img src={profileSrc} width="37px" height="37px" marginTop="7px" borderRadius="50%" />
                 <Div marginTop="5px">

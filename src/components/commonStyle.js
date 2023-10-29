@@ -55,11 +55,10 @@ export const Button = styled.button`
 export const Img = styled.img`
     width: ${props => props.width || null};
     height: ${props => props.height || null};
-    border-radius: ${props => props.borderRadius ? "20px" : "0px"};
     margin-top: ${props => props.marginTop || null};
     margin-right: ${props => props.marginRight || "10px"};
 
-    border-radius: ${props => props.borderRadius ? props.borderRadius : (props.videoBorderStyle ? "0px" : "20px") || null};
+    border-radius: ${props => props.borderRadius || null};
 `
 export const Input = styled.input`
     height: 38px;
@@ -114,12 +113,18 @@ const calFlex = (type) => {
                 display: flex;
                 flex-wrap: wrap;
             `
+        case "row_column_center":
+            return`
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+            `
         case "inline_column_center":
             return`
                 display: inline-flex;
                 flex-direction: column;
                 align-items: center;
-
             `
         case "section":
             return`
